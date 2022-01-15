@@ -49,14 +49,11 @@ console.log(fifthTask);
 //https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
-document.getElementById("content").innerHTML='<object type="text/html" data="https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris" ></object>';
-
-window.location.href = "https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris";
-let allBoulevards = document.querySelectorAll('.mw-category-group li > a');
-console.log(allBoulevards); 
-
 // 7) Sort Exercice
 // sort people alphabetically by last name
+
+let seventhTask = people.sort();
+console.log(seventhTask);
 
 // reduce
 // 8) Sum up the instances of each of these
@@ -72,14 +69,54 @@ const data = [
 	'car',
 	'truck',
 ];
+// TODO: get more from the idea of reduce
+let eightTask = data.reduce(function (acc, curr) {
+	return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+}, {});
 
-/* 9) zadanie
-	
-	1) vytvorte class Employee
-	2) jeho properties budu: titul, meno, vek, pozicia
-	3) pouzije sa getter pre vytvoreni stringu, kde sa spoji titul s menom {fullName}
-	4) method ourEmployee() vracia: {fullname} pracuje na pozicii {position} a ma {age}.
+console.log(eightTask);
 
-	5) vytvorim si pole so zamestancami, kde pouzijem class Employee, a pridam si troch zamestancov
-	6) vytvorim si funkciu, do ktorej si poslem funckiu, prejde mi zoznam zamestancov, najde spravneho a pouzije funkcu ourEmployee()
- */
+// 9) zadanie
+
+	// 	1) vytvorte class Employee
+	class Employee {
+		constructor( title, name, age, position ) {
+			// 	2) jeho properties budu: title, name, age, position
+			this.title = title;
+			this.name = name;
+			this.age = age;
+			this.position = position;
+		}
+		// 	3) pouzije sa getter pre vytvoreni stringu, kde sa spoji title s namem {fullName}
+
+		get fullName() {
+			return this.title + ' ' + this.name;
+		}
+
+		// 	4) method ourEmployee() vracia: {fullname} pracuje na pozicii {position} a ma {age}.
+		ourEmployee() {
+			return `${this.fullName} works on position ${this.position} and is ${this.age} yers old.`;
+		}
+	}
+
+	// 	5) vytvorim si pole so zamestancami, kde pouzijem class Employee, a pridam si troch zamestancov
+	let employees = [
+		new Employee( 'Mgr', 'Martin Kováč', 54, 'programátor' ),
+		new Employee( 'Ing', 'Franta Pepík', 14, 'kodér' ),
+		new Employee( 'Bc', 'Homer Simpson', 71, 'uklízeč' )
+	];
+
+	employees.map(
+		employee => console.log( employee.ourEmployee() )
+	);
+
+	// 	6) vytvorim si funkciu, do ktorej si poslem funckiu predpokladam poziciu aby to davalo zmysel, prejde mi zoznam zamestancov, najde spravneho a pouzije funkcu ourEmployee()
+	function findEmployee(employees, position) {
+		employees.map(function(employee){
+			if(employee.position == position){
+				console.log(employee.ourEmployee());
+			}
+		});
+	}
+
+	findEmployee(employees, 'programátor');
