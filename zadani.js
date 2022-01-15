@@ -120,3 +120,29 @@ console.log(eightTask);
 	}
 
 	findEmployee(employees, 'programátor');
+
+
+// 10) Nájdi chyby
+	// // vyýsledok by mal vraciat: My car is 8 years old.
+
+	class Car {
+	  constructor(name, year) {
+	    this.name = name;
+	    this.year = year;
+	  }
+	  age(x) {
+	    return x - this.year;
+	  }
+	}
+
+	let date = new Date();
+	let year = date.getFullYear();
+	
+	let myCar = new Car("Ford", 2014);
+	document.onload = function() {
+		let demo = document.getElementById('demo')
+		demo.innerHTML += "My car is " + myCar.age(year) + " years old.";
+	}
+
+
+
