@@ -139,9 +139,8 @@ console.log(eightTask);
 	let year = date.getFullYear();
 	
 	let myCar = new Car("Ford", 2014);
-	document.onload = function() {
-		let demo = document.getElementById('demo')
-		demo.innerHTML += "My car is " + myCar.age(year) + " years old.";
+	window.onload = function() {
+		document.getElementById("demo").innerHTML = "My car is " + myCar.age(year) + " years old.";
 	}
 
 
